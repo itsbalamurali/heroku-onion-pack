@@ -4,14 +4,13 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Found a .torrc"
+echo "-----> Found Tor Configuration file"
 
-# if hello.txt is empty, abort the build
-if [ ! -s $1/.torrc ]; then
+# if app.torrc is empty, abort the build
+if [ ! -s $1/app.torrc ]; then
   echo ".torrc is empty" | indent
   exit 1
 fi
 
 #replace hello with goodbye in a new file
-#cat $1/.torrc |
-sed -e "s/HEROKUPORT/"$PORT"/g" > $1/.torrc
+cat $1/app.torrc | sed -e "s/HEROKUPORT/"$PORT"/g" > $1/.torrc
