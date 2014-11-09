@@ -12,6 +12,12 @@ if [ ! -s $1/app.torrc ]; then
   exit 1
 fi
 
-cp app.torrc .torrc
+cat >>boot.sh <<EOF
+cp /app/app.torrc /app/.torrc
+sed -i 's/HEROKUPORT/'\$PORT'/' /app/.torrc
+echo "Launching Tor"
+exec /app/tor/bin/tor
+EOF
 
-sed -i.bak "s/HEROKUPORT/"$PORT"/g" .torrc
+chmod +x boot.sh
+#sed -i.bak "s/HEROKUPORT/"$PORT"/g" .torrc

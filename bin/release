@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  web: /app/tor/bin/tor -f .torrc
+  web: sh boot.sh
 EOF
