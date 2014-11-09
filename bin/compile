@@ -12,5 +12,6 @@ if [ ! -s $1/app.torrc ]; then
   exit 1
 fi
 
-#replace hello with goodbye in a new file
-cat $1/app.torrc | sed -e "s/HEROKUPORT/"$PORT"/g" > $1/.torrc
+cp app.torrc .torrc
+
+sed -i.bak "s/HEROKUPORT/"$PORT"/g" .torrc
