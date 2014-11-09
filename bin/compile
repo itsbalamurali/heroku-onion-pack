@@ -14,10 +14,9 @@ fi
 
 cat >>boot.sh <<EOF
 cp /app/app.torrc /app/.torrc
-sed -i 's/HEROKUPORT/'\$PORT'/' /app/.torrc
+sed -i.bak "s/HEROKUPORT/"$PORT"/g" .torrc
 echo "Launching Tor"
 exec /app/tor/bin/tor
 EOF
 
 chmod +x boot.sh
-#sed -i.bak "s/HEROKUPORT/"$PORT"/g" .torrc
