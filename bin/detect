@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f $1/.torrc ]; then
+if [ -f $1/app.torrc ]; then
     echo "Tor App"
     exit 0
 else
